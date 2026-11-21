@@ -5,6 +5,7 @@ import fastifyStatic from '@fastify/static'
 import { createStore } from './services/store.js'
 import syncRoutes from './routes/sync.js'
 import settingsRoutes from './routes/settings.js'
+import missionRoutes from './routes/missions.js'
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url))
 
@@ -15,5 +16,6 @@ export function buildApp({ store = createStore(), fetchImpl = fetch, logger = tr
   app.register(fastifyStatic, { root: path.join(ROOT, 'public') })
   app.register(syncRoutes)
   app.register(settingsRoutes)
+  app.register(missionRoutes)
   return app
 }
