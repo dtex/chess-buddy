@@ -1,5 +1,5 @@
 import { html, nothing } from 'lit'
-import { View, api, ago } from './lib.js'
+import { View, api, ago, board, dot, sideName } from './lib.js'
 import './map.js'
 import './settings.js'
 import './games.js'
@@ -16,6 +16,7 @@ class CbApp extends View {
     notice: { state: true },
     fresh: { state: true },
     version: { state: true },
+    saving: { state: true },
   }
 
   constructor() {
@@ -77,6 +78,58 @@ class CbApp extends View {
     }
   }
 
+  async save() {
+    this.saving = true
+    try {
+      const r = await api('/api/save', { method: 'POST' })
+      this.notice = { err: !r.pushed, text: r.message }
+    } catch (err) {
+      this.notice = { err: true, text: `Save failed. ${err.message}` }
+    } finally {
+      this.saving = false
+    }
+  }
+
+  async dismissEvent(event, to = 'map') {
+    try {
+      this.setState(await api('/api/events/seen', { method: 'POST', body: { ids: [event.id] } }))
+    } catch (err) {
+      this.notice = { err: true, text: err.message }
+    }
+    location.hash = to
+  }
+
+  /** Shown once for each completed mission, oldest first. */
+  renderComplete(event) {
+    const { node, next } = event
+    const reach = next?.reach
+    const odds = !reach?.of ? ''
+      : reach.reached === 0 ? `None of your last ${reach.of} ${sideName(next.side)} games got here, so this one may take a while.`
+      : `From your history, about 1 in ${Math.max(1, Math.round(reach.of / reach.reached))} ${sideName(next.side)} games gets here.`
+    return html`<div class="overlay" role="dialog" aria-modal="true" aria-label="Mission complete">
+      <div class="rcard">
+        ${board((next ?? node).fen, (next ?? node).side === 'b')}
+        <div>
+          <span class="chip ok">${node.name} complete · ${node.count} of ${node.target}</span>
+          ${next
+            ? html`<div class="eyebrow" style="margin-top:16px">New opening uncovered</div>
+                <h3>${next.name}</h3>
+                <div class="mv">${next.moves}</div>
+                <p style="margin-top:12px">${next.blurb}</p>
+                <p class="muted">${dot(next.side)}${next.isActive ? 'Your new mission' : 'Mission'}: reach this position ${next.target} times as ${sideName(next.side)}. ${odds}</p>
+                <div class="row">
+                  <button class="pri" @click=${() => this.dismissEvent(event)}>Back to the map</button>
+                  <button @click=${() => this.dismissEvent(event, `opening-${next.id}`)}>Study it</button>
+                </div>
+                <p class="muted" style="margin-top:12px">Prefer another branch? Pick any hidden ${sideName(next.side)} tile on the map. ${next.name} is then parked and keeps its count.</p>`
+            : html`<h3 style="margin-top:16px">Nothing left to uncover from here</h3>
+                <p>There are no more hidden ${sideName(node.side)} openings next to your map. More open up as your ${sideName(node.side === 'w' ? 'b' : 'w')} missions progress.</p>
+                <button class="pri" @click=${() => this.dismissEvent(event)}>Back to the map</button>`}
+        </div>
+      </div>
+    </div>`
+  }
+
   renderView() {
     if (!this.state) return html`<div class="page"><p class="muted">Loading…</p></div>`
     switch (this.route.name) {
@@ -102,12 +155,14 @@ class CbApp extends View {
         <span class="sp"></span>
         ${this.state ? html`<span class="muted">${this.state.username} · synced ${ago(this.state.lastSync)}</span>` : nothing}
         <button ?disabled=${this.syncing} @click=${() => this.sync()}>${this.syncing ? 'Checking…' : 'Check for new games'}</button>
+        <button ?disabled=${this.saving} @click=${() => this.save()}>${this.saving ? 'Saving…' : 'Save to GitHub'}</button>
       </header>
       ${this.notice
         ? html`<div class="notice ${this.notice.err ? 'err' : ''}" role="status"><span>${this.notice.text}</span><span class="sp"></span>
             <button class="link" @click=${() => (this.notice = null)}>Dismiss</button></div>`
         : nothing}
-      ${this.renderView()}`
+      ${this.renderView()}
+      ${this.state?.events.length ? this.renderComplete(this.state.events[0]) : nothing}`
   }
 }
 customElements.define('cb-app', CbApp)
