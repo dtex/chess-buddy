@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "createdAt": 1795223748,
+  "settings": {
+    "username": "dtexus",
+    "timeClasses": [
+      "blitz",
+      "rapid",
+      "daily"
+    ],
+    "ratedOnly": true
+  },
+  "missions": {},
+  "slots": {
+    "w": null,
+    "b": null
+  },
+  "events": [],
+  "lastSync": 1795223754
+}

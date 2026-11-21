@@ -1,0 +1,24 @@
+{
+  "name": "chess-buddy",
+  "version": "0.1.0",
+  "description": "Opening missions tracked against your chess.com games",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "esbuild public/src/app.js --bundle --format=esm --minify --sourcemap --outfile=public/dist/app.js",
+    "start": "npm run build && node start.js",
+    "dev": "npm run build && node --watch start.js",
+    "test": "node --test",
+    "tree:check": "node scripts/build-tree.js"
+  },
+  "engines": { "node": ">=20.0.0" },
+  "dependencies": {
+    "@fastify/static": "^7.0.4",
+    "chess.js": "^1.4.0",
+    "fastify": "^4.28.1",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
