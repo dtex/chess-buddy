@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "createdAt": 1795230042,
+  "settings": {
+    "username": "dtexus",
+    "timeClasses": [
+      "blitz",
+      "rapid",
+      "daily"
+    ],
+    "ratedOnly": true
+  },
+  "missions": {
+    "kp": {
+      "status": "active",
+      "side": "w",
+      "startedAt": 1795230042,
+      "games": [
+        "4950a280-e558-11f1-ac9d-eac64901000f",
+        "239d2ade-e5c0-11f1-9d92-b8bff601000f",
+        "31728b7c-e5ce-11f1-ac9d-eac64901000f"
+      ],
+      "since": 1795230042
+    },
+    "open": {
+      "status": "active",
+      "side": "b",
+      "startedAt": 1795230042,
+      "games": [
+        "34538c4d-e5c3-11f1-9d92-b8bff601000f",
+        "88a2fee8-e5c4-11f1-9d71-2a021301000f",
+        "9a9b7de5-e5c7-11f1-af48-6cd56901000f"
+      ],
+      "since": 1795230042
+    }
+  },
+  "slots": {
+    "w": "kp",
+    "b": "open"
+  },
+  "events": [],
+  "lastSync": 1795284226
+}
