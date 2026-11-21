@@ -44,7 +44,7 @@ test('a game that reaches the position counts', () => {
   const g = game('e4 e5 Nf3 Nc6 Bc4 Bc5 c3')
   assert.equal(reached(italian, g), true)
   assert.deepEqual(judge(g, { node: italian, side: 'w', settings }), { type: 'counted', node: 'italian' })
-  assert.equal(deepestNode(tree, g).id, 'italian')
+  assert.equal(deepestNode(tree, g).id, 'giuoco-c3', 'the deepest opening on the path wins')
 })
 
 test('a transposition still counts', () => {

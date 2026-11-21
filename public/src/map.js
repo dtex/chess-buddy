@@ -76,19 +76,25 @@ class CbMap extends View {
     this.resize?.disconnect()
   }
 
+  /** Show the whole map when it fits at a readable size; otherwise centre on the active missions. */
   fit() {
     const vp = this.querySelector('.viewport')
     if (!vp || !this.state || !vp.clientWidth) return
-    const { width, height } = layout(this.state)
+    const { all, width, height } = layout(this.state)
     const pad = 28
     const top = 60 // clears the zoom buttons
-    const k = Math.min(1, (vp.clientWidth - pad * 2) / width, (vp.clientHeight - top - pad) / height)
-    const scale = Math.max(0.45, k)
-    this.view = {
-      k: scale,
-      x: Math.max(pad, (vp.clientWidth - width * scale) / 2),
-      y: Math.max(top, (vp.clientHeight - height * scale) / 2),
-    }
+    const vw = vp.clientWidth
+    const vh = vp.clientHeight
+    const k = Math.min(1, Math.max(0.7, Math.min((vw - pad * 2) / width, (vh - top - pad) / height)))
+    const focus = all.filter((i) => i.node?.status === 'active')
+    const box = focus.length ? focus : all
+    const cx = (Math.min(...box.map((i) => i.x)) + Math.max(...box.map((i) => i.x + W))) / 2
+    const cy = (Math.min(...box.map((i) => i.y)) + Math.max(...box.map((i) => i.y + i.h))) / 2
+    const place = (size, view, centre, lead, trail) =>
+      size * k <= view - lead - trail
+        ? lead + (view - lead - trail - size * k) / 2
+        : Math.min(lead, Math.max(view - trail - size * k, view / 2 - centre * k))
+    this.view = { k, x: place(width, vw, cx, pad, pad), y: place(height, vh, cy, top, pad) }
   }
 
   zoom(factor, cx, cy) {

@@ -71,5 +71,173 @@
 
   { "id": "london", "parent": "closed", "name": "London System", "side": "w", "moves": "d4 d5 Bf4", "eco": "D00",
     "blurb": "A setup you can play against almost anything. The bishop comes out before e3 shuts it in.",
-    "ideas": ["Build the triangle: pawns on d4, e3 and c3.", "Knights to f3 and d2, bishop to d3, then castle.", "Watch for ...Qb6 hitting b2 once your bishop has left c1."] }
+    "ideas": ["Build the triangle: pawns on d4, e3 and c3.", "Knights to f3 and d2, bishop to d3, then castle.", "Watch for ...Qb6 hitting b2 once your bishop has left c1."] },
+
+  { "id": "giuoco", "parent": "italian", "name": "Giuoco Piano", "side": "b", "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5", "eco": "C50",
+    "blurb": "Black puts the bishop on its best diagonal and answers White's pressure on f7 with pressure on f2.",
+    "ideas": ["Castle soon; your king is the target of Ng5 and Bxf7 ideas.", "Meet c3 with ...Nf6, attacking e4 before White gets d4 in comfortably.", "After d4 exd4 cxd4, ...Bb4+ saves the bishop with check."] },
+
+  { "id": "giuoco-c3", "parent": "giuoco", "name": "Giuoco Piano: 4.c3", "side": "w", "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3", "eco": "C53",
+    "blurb": "White prepares d4, to build a full pawn centre and push the c5 bishop back.",
+    "ideas": ["After d4 exd4, recapture with the c-pawn.", "Black's best reply is ...Nf6, hitting e4. Decide in advance: d3 for a quiet game, d4 for a sharp one.", "If unsure, castle before opening the centre."] },
+
+  { "id": "evans", "parent": "giuoco", "name": "Evans Gambit", "side": "w", "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4", "eco": "C51",
+    "blurb": "White gives up a wing pawn to gain time for c3 and d4.",
+    "ideas": ["After ...Bxb4, play c3 to hit the bishop, then d4.", "You are a pawn down, so play fast: develop, castle, open lines.", "Ba3 can stop Black from castling."] },
+
+  { "id": "twoknights", "parent": "italian", "name": "Two Knights Defense", "side": "b", "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6", "eco": "C55",
+    "blurb": "Black counterattacks e4 instead of copying White. It invites Ng5, so you need to know one line.",
+    "ideas": ["Against Ng5, play ...d5. It is the only good way to block the attack on f7.", "After exd5, don't recapture with the knight; Nxf7, the Fried Liver, follows. Play ...Na5.", "Against a quiet d3, just develop with ...Bc5 or ...Be7."] },
+
+  { "id": "knightattack", "parent": "twoknights", "name": "Two Knights: Knight Attack", "side": "w", "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5", "eco": "C57",
+    "blurb": "Knight and bishop both hit f7. Black has exactly one good defence, and many players don't know it.",
+    "ideas": ["If Black ignores the threat, take on f7 and fork the queen and rook.", "After ...d5 exd5 Nxd5, the sacrifice Nxf7 (the Fried Liver) gives a strong attack.", "You have moved the knight twice, so if the attack fails you are behind in development."] },
+
+  { "id": "ka-d5", "parent": "knightattack", "name": "Knight Attack: 4...d5", "side": "b", "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5", "eco": "C57",
+    "blurb": "The pawn blocks the bishop's line to f7. It is the only move that holds.",
+    "ideas": ["After exd5, play ...Na5 to chase the bishop. Avoid ...Nxd5.", "You are a pawn down for a while but gain time against White's pieces.", "...h6 next sends the knight back."] },
+
+  { "id": "morphy", "parent": "ruy", "name": "Ruy Lopez: Morphy Defense", "side": "b", "moves": "e4 e5 Nf3 Nc6 Bb5 a6", "eco": "C70",
+    "blurb": "Black asks the bishop what it wants straight away. If it retreats, ...b5 is available later to break the pressure.",
+    "ideas": ["After Bxc6 dxc6, Nxe5 is met by ...Qd4, winning the pawn back.", "After Ba4, continue ...Nf6 and ...Be7, then castle.", "Keep ...b5 in reserve to push the bishop off the a4 to e8 diagonal."] },
+
+  { "id": "fourknights", "parent": "nc6", "name": "Four Knights Game", "side": "w", "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6", "eco": "C47",
+    "blurb": "Both sides bring out all four knights before anything else. Solid and easy to play.",
+    "ideas": ["Continue with Bb5 in Ruy Lopez style, or d4 in Scotch style.", "Nothing is hanging and nothing is forced, so clean development decides the game.", "Watch for ...Nd4 tricks if you play Bb5."] },
+
+  { "id": "petrov-main", "parent": "petrov", "name": "Petrov: 3.Nxe5", "side": "w", "moves": "e4 e5 Nf3 Nf6 Nxe5", "eco": "C42",
+    "blurb": "Take the pawn. Black cannot take back on e4 straight away without trouble.",
+    "ideas": ["If Black plays ...Nxe4 at once, Qe2 wins material.", "After ...d6, retreat with Nf3. Then ...Nxe4 is fine for Black and you play d4.", "The position stays symmetrical, so a lead in development is what you are playing for."] },
+
+  { "id": "petrov-d6", "parent": "petrov-main", "name": "Petrov: 3...d6", "side": "b", "moves": "e4 e5 Nf3 Nf6 Nxe5 d6", "eco": "C42",
+    "blurb": "Chase the knight first, then take the e4 pawn safely.",
+    "ideas": ["After Nf3, play ...Nxe4.", "If Qe2 pins your knight, defend it with ...Qe7.", "Never take on e4 before ...d6: Qe2 wins material."] },
+
+  { "id": "bishop", "parent": "open", "name": "Bishop's Opening", "side": "w", "moves": "e4 e5 Bc4", "eco": "C23",
+    "blurb": "The bishop goes to its best square first and leaves the f-pawn free to move.",
+    "ideas": ["It often becomes an Italian Game after Nf3.", "d3 and Nc3 give a solid setup.", "Against ...Nf6, defend e4 with d3 or Nc3."] },
+
+  { "id": "vienna", "parent": "open", "name": "Vienna Game", "side": "w", "moves": "e4 e5 Nc3", "eco": "C25",
+    "blurb": "White protects e4 and keeps the f-pawn free for f4.",
+    "ideas": ["f4 next gives a King's Gambit style attack with less risk.", "Bc4 and d3 give a quieter setup.", "Against ...Nf6, f4 is the Vienna Gambit; if ...exf4, e5 chases the knight."] },
+
+  { "id": "kg", "parent": "open", "name": "King's Gambit", "side": "w", "moves": "e4 e5 f4", "eco": "C30",
+    "blurb": "White offers the f-pawn to pull Black's e-pawn away and open the f-file.",
+    "ideas": ["If Black takes, play Nf3 to stop ...Qh4+.", "Then Bc4 and castle; the f-file opens toward f7.", "Your own king is exposed too. Expect sharp games."] },
+
+  { "id": "center", "parent": "open", "name": "Center Game: 2...exd4", "side": "b", "moves": "e4 e5 d4 exd4", "eco": "C21",
+    "blurb": "White strikes in the centre at once. Take the pawn.",
+    "ideas": ["After Qxd4, play ...Nc6 and gain a move on the queen.", "If White offers more pawns with c3, the Danish Gambit, you can decline with ...d5.", "Develop fast; White's early queen gives you free moves."] },
+
+  { "id": "wayward-g6", "parent": "wayward", "name": "Wayward Queen: 3...g6", "side": "b", "moves": "e4 e5 Qh5 Nc6 Bc4 g6", "eco": "C20",
+    "blurb": "With e5 defended, ...g6 blocks the mate on f7 and hits the queen.",
+    "ideas": ["After Qf3 the mate threat is back. Play ...Nf6.", "Then ...Bg7 and castle; your position is already better.", "Look for ...Nd4, hitting the queen and c2."] },
+
+  { "id": "sic-nf3", "parent": "sicilian", "name": "Sicilian: 2.Nf3", "side": "w", "moves": "e4 c5 Nf3", "eco": "B27",
+    "blurb": "The main move. White develops and prepares d4.",
+    "ideas": ["d4 next opens the position; recapture on d4 with the knight.", "You get a lead in development; Black gets an extra centre pawn.", "If you prefer quiet play, Bc4 or Bb5 setups are possible."] },
+
+  { "id": "sic-d6", "parent": "sic-nf3", "name": "Sicilian: 2...d6", "side": "b", "moves": "e4 c5 Nf3 d6", "eco": "B50",
+    "blurb": "Black covers e5 and prepares ...Nf6 without being hit by e5.",
+    "ideas": ["After d4, always take: ...cxd4.", "Then ...Nf6 attacks e4 and makes White defend it with Nc3.", "Choose your setup afterwards: ...a6 (Najdorf), ...g6 (Dragon) or ...e6."] },
+
+  { "id": "sic-open", "parent": "sic-d6", "name": "Open Sicilian", "side": "w", "moves": "e4 c5 Nf3 d6 d4", "eco": "B50",
+    "blurb": "White trades the d-pawn for Black's c-pawn and gets open lines for every piece.",
+    "ideas": ["After ...cxd4, recapture with Nxd4, not Qxd4.", "Nc3 next defends e4.", "White usually attacks on the kingside; Black plays on the c-file and queenside."] },
+
+  { "id": "alapin", "parent": "sicilian", "name": "Sicilian: Alapin", "side": "w", "moves": "e4 c5 c3", "eco": "B22",
+    "blurb": "White prepares d4 and wants to recapture with a pawn, keeping a full centre.",
+    "ideas": ["After d4 cxd4 cxd4 you have the classic two-pawn centre.", "Black's main replies are ...d5 and ...Nf6, both hitting e4.", "Far less to memorise than the Open Sicilian."] },
+
+  { "id": "french-d5", "parent": "french", "name": "French: 2...d5", "side": "b", "moves": "e4 e6 d4 d5", "eco": "C00",
+    "blurb": "The French proper. Black attacks e4 and makes White decide what to do with it.",
+    "ideas": ["If e5, hit the base of the chain with ...c5 and pile up on d4 with ...Nc6 and ...Qb6.", "If exd5, recapture with the e-pawn and your c8 bishop is free.", "If Nc3, choose between ...Nf6 and ...Bb4."] },
+
+  { "id": "french-advance", "parent": "french-d5", "name": "French: Advance Variation", "side": "w", "moves": "e4 e6 d4 d5 e5", "eco": "C02",
+    "blurb": "White takes space and locks the centre. Black's c8 bishop stays shut in.",
+    "ideas": ["Support d4 with c3 and Nf3.", "Black will attack d4 with ...c5, ...Nc6 and ...Qb6. Count attackers and defenders.", "Your extra space gives you play on the kingside."] },
+
+  { "id": "french-exchange", "parent": "french-d5", "name": "French: Exchange Variation", "side": "w", "moves": "e4 e6 d4 d5 exd5", "eco": "C01",
+    "blurb": "White releases the tension. The structure becomes symmetrical and simple.",
+    "ideas": ["After ...exd5, develop Nf3 and Bd3, then castle.", "The trade frees Black's bad bishop, so play for piece activity, not structure.", "Put a rook on the open e-file."] },
+
+  { "id": "caro", "parent": "kp", "name": "Caro-Kann Defense", "side": "b", "moves": "e4 c6", "eco": "B10",
+    "blurb": "Like the French, Black prepares ...d5, but keeps the c8 bishop's diagonal open.",
+    "ideas": ["Play ...d5 next.", "Develop the light-squared bishop to f5 or g4 before playing ...e6.", "Solid, with fewer weaknesses than most defences."] },
+
+  { "id": "caro-d5", "parent": "caro", "name": "Caro-Kann: 2...d5", "side": "b", "moves": "e4 c6 d4 d5", "eco": "B12",
+    "blurb": "Black challenges e4 with full pawn support.",
+    "ideas": ["If e5, play ...Bf5 and then ...e6.", "If exd5, recapture with ...cxd5.", "If Nc3, take with ...dxe4, then develop with ...Bf5 or ...Nf6."] },
+
+  { "id": "caro-advance", "parent": "caro-d5", "name": "Caro-Kann: Advance Variation", "side": "w", "moves": "e4 c6 d4 d5 e5", "eco": "B12",
+    "blurb": "White gains space. Unlike in the French, Black's bishop gets out to f5.",
+    "ideas": ["Develop Nf3 and Be2, then castle.", "Black will hit your centre with ...c5.", "Don't rush g4 to chase the bishop until your pieces are out."] },
+
+  { "id": "caro-exchange", "parent": "caro-d5", "name": "Caro-Kann: Exchange Variation", "side": "w", "moves": "e4 c6 d4 d5 exd5", "eco": "B13",
+    "blurb": "A simple structure with a half-open e-file for White and a half-open c-file for Black.",
+    "ideas": ["After ...cxd5, Bd3 stops ...Bf5.", "c3 supports d4; Bf4 and Nf3 follow.", "c4 instead leads to the sharper Panov Attack."] },
+
+  { "id": "scandi-qxd5", "parent": "scandi-accept", "name": "Scandinavian: 2...Qxd5", "side": "b", "moves": "e4 d5 exd5 Qxd5", "eco": "B01",
+    "blurb": "Black takes back at once. The queen is exposed, so know where it goes next.",
+    "ideas": ["After Nc3, play ...Qa5 or ...Qd6.", "Then ...Nf6, ...c6 and ...Bf5.", "The pawn on c6 gives your queen a retreat to c7."] },
+
+  { "id": "scandi-nc3", "parent": "scandi-qxd5", "name": "Scandinavian: 3.Nc3", "side": "w", "moves": "e4 d5 exd5 Qxd5 Nc3", "eco": "B01",
+    "blurb": "Develop with an attack on the queen. This free move is the reason to take on d5.",
+    "ideas": ["Then d4, Nf3 and Bc4 or Bd2.", "After ...Qa5, Bd2 sets up discovered attacks on the queen.", "You are a move ahead, so open the game."] },
+
+  { "id": "scandi-qa5", "parent": "scandi-nc3", "name": "Scandinavian: Main Line", "side": "b", "moves": "e4 d5 exd5 Qxd5 Nc3 Qa5", "eco": "B01",
+    "blurb": "The queen stays active and keeps an eye on the c3 knight.",
+    "ideas": ["Play ...c6 soon so the queen can drop back to c7.", "Develop ...Nf6 and ...Bf5, then ...e6.", "Watch for Bd2 followed by a knight move that uncovers an attack on your queen."] },
+
+  { "id": "alekhine", "parent": "kp", "name": "Alekhine's Defense", "side": "b", "moves": "e4 Nf6", "eco": "B02",
+    "blurb": "Black tempts the e-pawn forward, planning to attack an over-extended centre later.",
+    "ideas": ["After e5, the knight goes to d5.", "Let White push pawns, then undermine them with ...d6.", "You give up space, so it is risky if you don't know the plans."] },
+
+  { "id": "qgd", "parent": "qg", "name": "Queen's Gambit Declined", "side": "b", "moves": "d4 d5 c4 e6", "eco": "D30",
+    "blurb": "Black holds d5 with a pawn. Solid and classical.",
+    "ideas": ["Develop ...Nf6 and ...Be7, then castle.", "The c8 bishop is shut in; ...b6 and ...Bb7 is one way to free it.", "Play ...c5 when you are ready to challenge the centre."] },
+
+  { "id": "qga", "parent": "qg", "name": "Queen's Gambit Accepted", "side": "b", "moves": "d4 d5 c4 dxc4", "eco": "D20",
+    "blurb": "Black takes the pawn but should not try to keep it.",
+    "ideas": ["Don't defend c4 with ...b5; a4 and Qf3 tricks win material.", "Use the time White spends recapturing to develop and play ...c5.", "...Nf6 and ...e6 come next."] },
+
+  { "id": "slav", "parent": "qg", "name": "Slav Defense", "side": "b", "moves": "d4 d5 c4 c6", "eco": "D10",
+    "blurb": "Black supports d5 without blocking the c8 bishop.",
+    "ideas": ["Bring the bishop to f5 or g4 before ...e6.", "Here ...dxc4 followed by ...b5 is a real threat.", "Very solid, and a natural partner to the Caro-Kann."] },
+
+  { "id": "indian", "parent": "qp", "name": "Indian Game", "side": "b", "moves": "d4 Nf6", "eco": "A45",
+    "blurb": "Black stops e4 with a piece and keeps the pawn structure flexible.",
+    "ideas": ["Choose your setup next: ...e6, ...g6 or ...d5.", "The knight controls e4 and d5.", "Castle kingside early."] },
+
+  { "id": "indian-c4", "parent": "indian", "name": "Indian Game: 2.c4", "side": "w", "moves": "d4 Nf6 c4", "eco": "A50",
+    "blurb": "White takes more space and prepares Nc3 and e4.",
+    "ideas": ["Nc3 next fights for e4.", "Against ...g6, build the big centre with e4.", "Against ...e6, Nf3 and Nc3 both work."] },
+
+  { "id": "kid", "parent": "indian-c4", "name": "King's Indian Setup: 2...g6", "side": "b", "moves": "d4 Nf6 c4 g6", "eco": "E60",
+    "blurb": "Black lets White build a centre, then attacks it.",
+    "ideas": ["...Bg7, ...d6 and castle, in almost any order.", "Strike with ...e5 or ...c5 once you have castled.", "The g7 bishop is your best piece; keep its diagonal in mind."] },
+
+  { "id": "dutch", "parent": "qp", "name": "Dutch Defense", "side": "b", "moves": "d4 f5", "eco": "A80",
+    "blurb": "Black takes control of e4 from the side and aims for a kingside attack.",
+    "ideas": ["...Nf6, ...e6 and ...Be7 is the simplest setup.", "The diagonal from e8 to h5 is weak; be careful about Qh5+ ideas.", "Be ready for e4, the Staunton Gambit."] },
+
+  { "id": "staunton", "parent": "dutch", "name": "Staunton Gambit", "side": "w", "moves": "d4 f5 e4", "eco": "A82",
+    "blurb": "White gives up the e-pawn to open lines against Black's weakened king.",
+    "ideas": ["After ...fxe4, play Nc3 to attack the pawn.", "Bg5 pins the knight that defends e4.", "f3 can offer a second pawn for fast development."] },
+
+  { "id": "english", "parent": "start", "name": "English Opening", "side": "w", "moves": "c4", "eco": "A10",
+    "blurb": "A flank opening. The pawn controls d5 and keeps White's centre pawns back for later.",
+    "ideas": ["Nc3 and g3 with Bg2 is the standard setup.", "It often becomes a Queen's Pawn opening after d4.", "Slower than 1.e4; play for the d5 square."] },
+
+  { "id": "english-e5", "parent": "english", "name": "English: Reversed Sicilian", "side": "b", "moves": "c4 e5", "eco": "A20",
+    "blurb": "A Sicilian with colours reversed. Black takes the centre.",
+    "ideas": ["Develop ...Nf6 and ...Nc6.", "...d5 opens the game if White allows it.", "White has an extra move compared with a real Sicilian, so don't over-press."] },
+
+  { "id": "reti", "parent": "start", "name": "Réti Opening", "side": "w", "moves": "Nf3", "eco": "A04",
+    "blurb": "A flexible first move. It stops ...e5 and keeps every central plan open.",
+    "ideas": ["Follow with d4, c4 or g3 depending on Black's reply.", "It often becomes a Queen's Pawn or English opening.", "You can't be hit by early tactics, but you threaten nothing yet either."] },
+
+  { "id": "vantkruijs", "parent": "start", "name": "Van't Kruijs Opening: 1...e5", "side": "b", "moves": "e3 e5", "eco": "A00",
+    "blurb": "White's quiet first move asks nothing. Take the centre.",
+    "ideas": ["Follow with ...d5 for a full pawn centre.", "Develop the knights to f6 and c6.", "If d4 hits your centre, defend with ...Nc6 or push ...e4."] }
 ]
