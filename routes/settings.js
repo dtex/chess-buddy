@@ -15,7 +15,15 @@ export default async function settingsRoutes(app) {
     const timeClasses = TIME_CLASSES.filter((t) => (body.timeClasses || []).includes(t))
     if (!timeClasses.length) return reply.code(400).send({ error: 'Tick at least one type of game to count.' })
 
-    const p = app.ctx.store.loadProgress()
+    let p = app.ctx.store.loadProgress()
+    if (username.toLowerCase() !== p.settings.username.toLowerCase()) {
+      // Stored games and missions belong to the old account.
+      if (body.reset !== true) {
+        return reply.code(409).send({ error: 'Changing the username starts over.', needsReset: true })
+      }
+      app.ctx.store.reset()
+      p = app.ctx.store.loadProgress()
+    }
     p.settings = { username, timeClasses, ratedOnly: body.ratedOnly !== false }
     app.ctx.store.saveProgress(p)
     return { settings: p.settings }

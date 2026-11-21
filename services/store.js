@@ -77,6 +77,12 @@ export function createStore(dir = process.env.CB_DATA_DIR || path.join(ROOT, 'da
       games.sort((a, b) => a.end - b.end)
       writeJson(monthFile(key), games, { compactRows: true })
     },
+    /** Delete every stored game and all progress. Used when the username changes. */
+    reset() {
+      for (const key of this.listMonths()) fs.rmSync(monthFile(key))
+      fs.rmSync(metaFile, { force: true })
+      fs.rmSync(progressFile, { force: true })
+    },
     /** Every stored game, oldest first. */
     loadAllGames() {
       const all = []
