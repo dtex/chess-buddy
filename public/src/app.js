@@ -2,6 +2,8 @@ import { html, nothing } from 'lit'
 import { View, api, ago } from './lib.js'
 import './map.js'
 import './settings.js'
+import './games.js'
+import './opening.js'
 
 const TABS = [['map', 'Map'], ['games', 'Games'], ['openings', 'Openings'], ['settings', 'Settings']]
 const SYNC_EVERY_MS = 5 * 60 * 1000
@@ -13,12 +15,14 @@ class CbApp extends View {
     syncing: { state: true },
     notice: { state: true },
     fresh: { state: true },
+    version: { state: true },
   }
 
   constructor() {
     super()
     this.route = this.readRoute()
     this.fresh = new Set()
+    this.version = 0
   }
 
   readRoute() {
@@ -42,6 +46,7 @@ class CbApp extends View {
   setState(state, fresh = []) {
     this.state = state
     if (fresh.length) this.fresh = new Set(fresh)
+    this.version++
   }
 
   async load() {
@@ -60,7 +65,6 @@ class CbApp extends View {
       const r = await api('/api/sync', { method: 'POST' })
       const state = await api('/api/state')
       this.setState(state, this.state ? state.nodes.filter((n) => !before.has(n.id)).map((n) => n.id) : [])
-      this.version = (this.version || 0) + 1
       if (r.added) {
         this.notice = { text: `${r.added} new game${r.added === 1 ? '' : 's'}, ${r.counted} counted toward a mission.` }
       } else if (!quiet) {
@@ -78,6 +82,12 @@ class CbApp extends View {
     switch (this.route.name) {
       case 'settings':
         return html`<cb-settings></cb-settings>`
+      case 'games':
+        return html`<cb-games .version=${this.version}></cb-games>`
+      case 'openings':
+        return html`<cb-openings .version=${this.version}></cb-openings>`
+      case 'opening':
+        return html`<cb-opening .openingId=${this.route.id} .version=${this.version}></cb-opening>`
       default:
         return html`<cb-map .state=${this.state} .fresh=${this.fresh}></cb-map>`
     }
